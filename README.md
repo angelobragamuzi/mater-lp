@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mater Medicina Feminina — Landing page
 
-## Getting Started
+Landing page institucional da Mater Medicina Feminina (Caratinga, MG).
+Next.js (App Router) · React · TypeScript · Tailwind CSS v4 · Motion.
 
-First, run the development server:
+## Executar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # build de produção
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Onde editar
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| O quê | Arquivo |
+|---|---|
+| Endereço, WhatsApp, Instagram, horários, avaliações do Google, créditos, caminhos das fotos | `src/data/clinic.ts` |
+| Especialidades e temas de "fases da vida" | `src/data/specialties.ts` |
+| Profissionais | `src/data/professionals.ts` |
+| Mensagens pré-preenchidas do WhatsApp | `src/lib/whatsapp.ts` |
+| Cores e tipografia (tokens) | `src/app/globals.css` |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Fotografias
 
-## Learn More
+Enquanto um caminho de imagem estiver `null`, o site mostra uma área reservada
+("Fotografia oficial pendente"). Para publicar uma foto, salve o arquivo em
+`public/images/...` e informe o caminho no arquivo de dados correspondente.
 
-To learn more about Next.js, take a look at the following resources:
+- As fotos atuais em `public/images/clinic` e `public/images/specialties` são
+  **ilustrativas**, do Unsplash (licença gratuita, uso comercial permitido).
+  Não retratam a equipe nem o espaço da Mater. Para trocar, substitua os
+  caminhos em `clinic.ts`/`specialties.ts` e defina `illustrativeImages: false`
+  para remover o aviso do rodapé.
+- `public/images/brand/mater-logo.png` — logotipo original (150×150, vindo do
+  Instagram). Substituir por SVG ou PNG em alta resolução.
+- Hero: retrato vertical, mínimo 1400×1900.
+- Profissionais: retratos 3:4, mínimo 1200×1600.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Pendências de confirmação com a clínica
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Número de WhatsApp `(33) 99968-2383` (provisório; `whatsapp.confirmed`).
+- Horário de funcionamento (`hours`).
+- Nota e quantidade de avaliações do Google (`googleReviews`).
+- Descrição de cada especialidade e vínculos dos temas de fases da vida.
+- Demais profissionais (nome, especialidade, registro, foto).
+- Texto institucional da seção "Conheça a Mater" (`About.tsx`).
+- Domínio oficial (`siteUrl`), Política de Privacidade e créditos do rodapé.

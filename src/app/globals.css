@@ -1,26 +1,105 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Tokens de design — Mater Medicina Feminina */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-rose: #ca7f83;
+  --color-rose-deep: #b4666b;
+  --color-wine: #732b45;
+  --color-wine-deep: #5a2036;
+  --color-blush: #f3dfde;
+  --color-paper: #faf7f4;
+  --color-graphite: #30272b;
+  --color-muted: #6f6266;
+  --color-line: #e6dbd7;
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-dm-sans), "DM Sans", system-ui, sans-serif;
+
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-graphite);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-wine);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-wine);
+  outline-offset: 3px;
+}
+
+/* Largura editorial padrão */
+.shell {
+  width: 100%;
+  max-width: 82rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+@media (min-width: 640px) {
+  .shell {
+    padding-inline: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .shell {
+    padding-inline: 3rem;
+  }
+}
+
+/* Título editorial */
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* Contorno de pétala — derivado da flor do logotipo */
+.petal {
+  clip-path: url(#mater-petal);
+}
+
+/* Link com sublinhado que se desenha */
+.link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 3px;
+  transition: background-size 0.45s var(--ease-soft);
+}
+.link-line:hover {
+  background-size: 0% 1px;
+  background-position: 100% 100%;
+}
+
+/* Mapa harmonizado com a paleta */
+.map-tone {
+  filter: grayscale(1) sepia(0.28) hue-rotate(-28deg) saturate(1.25)
+    contrast(0.94);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
